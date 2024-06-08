@@ -1,2 +1,1 @@
-Robot is openning late_invoices.html, scrapping data (FV number, company name, ammount, expiration date and company mail) and saves to datatable. 
-Then it builds template mail based on this data and send to working mail (robotproject24@gmail.com).
+Robot is opening late_invoices.html, scraping data (FV number, company name, amount, expiration date and company email) and saving it to a data table. Then it builds a template email based on this data and sends it to the working email (robotproject24@gmail.com).
