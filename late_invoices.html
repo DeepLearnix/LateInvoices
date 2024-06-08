@@ -8,7 +8,18 @@
           .forEach((cb) => {
             cb.click();
           });
-          alert("Wysłano powiadomienia o przeterminowanej płatności")
+        document.querySelectorAll(".reminder").forEach((reminder) => {
+          reminder.innerHTML = `${String(new Date().getDate()).padStart(
+            2,
+            "0"
+          )}.${String(new Date().getMonth() + 1).padStart(
+            2,
+            "0"
+          )}.${new Date().getFullYear()}`;
+        });
+        setTimeout(() => {
+          alert("Wysłano powiadomienia o przeterminowanej płatności");
+        }, 1000);
       };
     </script>
     <style>
@@ -39,6 +50,7 @@
         <th>Firma</th>
         <th>Kwota</th>
         <th>Termin Płatności</th>
+        <th>Data Powiadomienia</th>
         <th>Email</th>
       </thead>
       <tr>
@@ -47,6 +59,7 @@
         <td>Optimus</td>
         <td>1204,15 zł</td>
         <td>24.05.2024</td>
+        <td class="reminder">nie wysłano</td>
         <td>robotproject24@gmail.com</td>
         <td><input type="checkbox" /></td>
       </tr>
@@ -56,6 +69,7 @@
         <td>Glamorize</td>
         <td>485,00 zł</td>
         <td>05.06.2024</td>
+        <td class="reminder">nie wysłano</td>
         <td>robotproject24@gmail.com</td>
         <td><input type="checkbox" /></td>
       </tr>
@@ -65,6 +79,7 @@
         <td>Runmageddon</td>
         <td>870,65 zł</td>
         <td>22.05.2024</td>
+        <td class="reminder">nie wysłano</td>
         <td>robotproject24@gmail.com</td>
         <td><input type="checkbox" /></td>
       </tr>
@@ -74,6 +89,7 @@
         <td>Technova</td>
         <td>701,99 zł</td>
         <td>02.06.2024</td>
+        <td class="reminder">nie wysłano</td>
         <td>robotproject24@gmail.com</td>
         <td><input type="checkbox" /></td>
       </tr>
@@ -83,6 +99,7 @@
         <td>Digitrix</td>
         <td>650,79 zł</td>
         <td>05.06.2024</td>
+        <td class="reminder">nie wysłano</td>
         <td>robotproject24@gmail.com</td>
         <td><input type="checkbox" /></td>
       </tr>
@@ -92,6 +109,7 @@
         <td>Innovexa</td>
         <td>999,99 zł</td>
         <td>05.04.2024</td>
+        <td class="reminder">nie wysłano</td>
         <td>robotproject24@gmail.com</td>
         <td><input type="checkbox" /></td>
       </tr>
@@ -101,6 +119,7 @@
         <td>Techlux</td>
         <td>125,40 zł</td>
         <td>28.05.2024</td>
+        <td class="reminder">nie wysłano</td>
         <td>robotproject24@gmail.com</td>
         <td><input type="checkbox" /></td>
       </tr>
@@ -110,6 +129,7 @@
         <td>Codexa</td>
         <td>390,00 zł</td>
         <td>29.05.2024</td>
+        <td class="reminder">nie wysłano</td>
         <td>robotproject24@gmail.com</td>
         <td><input type="checkbox" /></td>
       </tr>
@@ -119,6 +139,7 @@
         <td>Infotec</td>
         <td>700,00 zł</td>
         <td>05.06.2024</td>
+        <td class="reminder">nie wysłano</td>
         <td>robotproject24@gmail.com</td>
         <td><input type="checkbox" /></td>
       </tr>
@@ -128,6 +149,7 @@
         <td>Systemix</td>
         <td>107,50 zł</td>
         <td>29.05.2024</td>
+        <td class="reminder">nie wysłano</td>
         <td>robotproject24@gmail.com</td>
         <td><input type="checkbox" /></td>
       </tr>
