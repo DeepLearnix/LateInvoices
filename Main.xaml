@@ -138,13 +138,13 @@
                 <uix:TargetAnchorable BrowserURL="file:///C:/Users/lisc9/OneDrive/Dokumenty/UiPath/LateInvoices/late_invoices.html" DesignTimeRectangle="20, 159, 695, 317" DesignTimeScaleFactor="1" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;" Guid="b8436fe8-9ae7-481a-889c-214d1cb83e9b" InformativeScreenshot="72738a79d17719653860322dd58126b3.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='late_invoices.html' /&gt;" SearchSteps="Selector" Version="V3" Visibility="Interactive" />
               </uix:NExtractData.Target>
             </uix:NExtractData>
-            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_lateInvoices]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="626,1301" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_lateInvoices]" DisplayName="For Each Row in dt_lateInvoices" sap:VirtualizedContainerService.HintSize="626,1301" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
               <ui:ForEachRow.Body>
                 <ActivityAction x:TypeArguments="sd:DataRow">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="592,1105" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <Sequence DisplayName="Work With CurrentRow" sap:VirtualizedContainerService.HintSize="592,1105" sap2010:WorkflowViewState.IdRef="Sequence_3">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:String" Name="CurrIndex">
                         <Variable.Default>
@@ -157,19 +157,19 @@
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <umab:GmailApplicationCard ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Account="robotproject24@gmail.com" DisplayName="Use Gmail" EmailAddress="robotproject24@gmail.com" sap:VirtualizedContainerService.HintSize="530,690" sap2010:WorkflowViewState.IdRef="GmailApplicationCard_2" Timeout="90" UseConnectionService="False">
+                    <umab:GmailApplicationCard ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Account="robotproject24@gmail.com" DisplayName="Use Gmail Account" EmailAddress="robotproject24@gmail.com" sap:VirtualizedContainerService.HintSize="530,690" sap2010:WorkflowViewState.IdRef="GmailApplicationCard_2" Timeout="90" UseConnectionService="False">
                       <umab:GmailApplicationCard.Body>
                         <ActivityAction x:TypeArguments="um:IMailQuickHandle">
                           <ActivityAction.Argument>
                             <DelegateInArgument x:TypeArguments="um:IMailQuickHandle" Name="Gmail" />
                           </ActivityAction.Argument>
-                          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="496,476" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                          <Sequence DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="496,476" sap2010:WorkflowViewState.IdRef="Sequence_4">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[&quot;Szanowni Państwo,&quot; + Environment.NewLine + &quot;informujemy o przeterminowanej płatności za &quot; + CurrentRow(&quot;Numer&quot;).ToString + &quot; na kwotę: &quot; + CurrentRow(&quot;Kwota&quot;).ToString + &quot;.&quot; + Environment.NewLine + &quot;Termin płatności upłynął &quot; + CurrentRow(&quot;Termin Płatności&quot;).ToString + &quot;.&quot; + Environment.NewLine + Environment.NewLine + &quot;Pozdrawiamy&quot; + Environment.NewLine + &quot;Eximus Park&quot;]" BodyType="Text" DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="434,391" sap2010:WorkflowViewState.IdRef="SendMailX_1" Importance="Normal" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[&quot;Powiadomienie o zaległej płatności za fakturę &quot; + CurrentRow(&quot;Numer&quot;).ToString]" To="[CurrentRow(&quot;Email&quot;).ToString]" UseDocumentAsBody="False">
+                            <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[&quot;Szanowni Państwo,&quot; + Environment.NewLine + &quot;informujemy o przeterminowanej płatności za &quot; + CurrentRow(&quot;Numer&quot;).ToString + &quot; na kwotę: &quot; + CurrentRow(&quot;Kwota&quot;).ToString + &quot;.&quot; + Environment.NewLine + &quot;Termin płatności upłynął &quot; + CurrentRow(&quot;Termin Płatności&quot;).ToString + &quot;.&quot; + Environment.NewLine + Environment.NewLine + &quot;Pozdrawiamy&quot; + Environment.NewLine + &quot;Eximus Park&quot;]" BodyType="Text" DisplayName="Email Details" sap:VirtualizedContainerService.HintSize="434,391" sap2010:WorkflowViewState.IdRef="SendMailX_1" Importance="Normal" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[&quot;Powiadomienie o zaległej płatności za fakturę &quot; + CurrentRow(&quot;Numer&quot;).ToString]" To="[CurrentRow(&quot;Email&quot;).ToString]" UseDocumentAsBody="False">
                               <umab:SendMailX.Files>
                                 <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                               </umab:SendMailX.Files>
@@ -198,7 +198,7 @@
                         </InArgument>
                       </umab:GmailApplicationCard.ClientSecret>
                     </umab:GmailApplicationCard>
-                    <Assign sap:VirtualizedContainerService.HintSize="530,114" sap2010:WorkflowViewState.IdRef="Assign_1">
+                    <Assign DisplayName="Assign Helper Variable For Dynamic Selectors" sap:VirtualizedContainerService.HintSize="530,114" sap2010:WorkflowViewState.IdRef="Assign_1">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:String">[CurrIndex]</OutArgument>
                       </Assign.To>
@@ -206,7 +206,7 @@
                         <InArgument x:TypeArguments="x:String">[CurrentRow("Lp.").ToString]</InArgument>
                       </Assign.Value>
                     </Assign>
-                    <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Label'" sap:VirtualizedContainerService.HintSize="530,216" sap2010:WorkflowViewState.IdRef="NClick_2" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="bfabd43c-8813-48c3-bb6e-c6c2f2d3f5c4" Version="V3">
+                    <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click Checkbox Indicator" sap:VirtualizedContainerService.HintSize="530,216" sap2010:WorkflowViewState.IdRef="NClick_2" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="bfabd43c-8813-48c3-bb6e-c6c2f2d3f5c4" Version="V3">
                       <uix:NClick.Target>
                         <uix:TargetAnchorable BrowserURL="file:///C:/Users/lisc9/OneDrive/Dokumenty/UiPath/LateInvoices/late_invoices.html" CVScreenId="608491b0-0e2f-431a-a1f2-62ce3bdce73f" CvElementArea="847, 236, 16, 16" CvType="CheckBox" DesignTimeRectangle="849, 238, 13, 13" DesignTimeScaleFactor="1" ElementType="CheckBox" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tableRow='2' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='checkbox' tag='INPUT' class='' aaname='' /&gt;" Guid="bcc0cb61-9495-420c-8eb4-9fdf22ff4e22" InformativeScreenshot="4ccdada56d75f2913c8f6bc206247c7d.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='late_invoices.html' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
                           <uix:TargetAnchorable.Anchors>
@@ -231,7 +231,7 @@
                 </ActivityAction>
               </ui:ForEachRow.Body>
             </ui:ForEachRow>
-            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Oznacz wysłanie'" sap:VirtualizedContainerService.HintSize="626,218" sap2010:WorkflowViewState.IdRef="NClick_3" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="bfabd43c-8813-48c3-bb6e-c6c2f2d3f5c4" Version="V3">
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click Submit Button" sap:VirtualizedContainerService.HintSize="626,218" sap2010:WorkflowViewState.IdRef="NClick_3" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="bfabd43c-8813-48c3-bb6e-c6c2f2d3f5c4" Version="V3">
               <uix:NClick.Target>
                 <uix:TargetAnchorable BrowserURL="file:///C:/Users/lisc9/OneDrive/Dokumenty/UiPath/LateInvoices/late_invoices.html" CVScreenId="a9ac34d3-5a04-4a2f-839a-ec30a260f785" CvElementArea="48, 550, 202, 24" CvTextArea="57, 554, 183, 16" CvTextArgument="Oznacz wystanie powiadomien" CvType="Button" DesignTimeRectangle="50, 551, 198, 21" DesignTimeScaleFactor="1" ElementType="Button" FullSelectorArgument="&lt;webctrl tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='BUTTON' type='' class='' aaname='Oznacz wysłanie powiadomień' check:innerText='Oznacz wysłanie powiadomień' /&gt;" Guid="2ab5479a-642e-4faf-964b-c92ad182649e" InformativeScreenshot="2c1d6c927998e6cb7e2cabb6c3ae866f.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='late_invoices.html' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive" />
               </uix:NClick.Target>
